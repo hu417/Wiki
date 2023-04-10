@@ -6,8 +6,8 @@
 3. 选择"亚洲诚信trustasia"
 4. 点击"创建免费的ssl证书"
 5. ACME域名配置
- 5.1. 域名,输入"bbse.top,*.bbse.top",点击下一步
- 5.2. DCV配置
+  5.1. 域名,输入"bbse.top,*.bbse.top",点击下一步
+  5.2. DCV配置
 ```bash
 bbse.top
   主机记录: _acme-challenge
@@ -19,12 +19,12 @@ bbse.top
   记录值: tqi3rsvpr7nid5q564kg.dcv2.httpsauto.com
 
 ```
- 5.3 阿里云域名解析
+  5.3 阿里云域名解析
     https://dns.console.aliyun.com/#/dns/domainList
     在相关域名后面点击解析设置，再点击添加记录，将DCV配置添加
- 5.4 DCV配置-配置完成立即检查
- 5.5 部署
-   5.5.1 使用acme.sh部署
+  5.4 DCV配置-配置完成立即检查
+  5.5 部署
+    5.5.1 使用acme.sh部署
 ```bash
 acme.sh --issue -d bbse.top -d *.bbse.top  --dns dns_dp --server https://acme.freessl.cn/v2/DV90/directory/xwjmrdo1xxj9c05tqx3e
 ```
