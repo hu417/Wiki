@@ -1,13 +1,16 @@
 ++++++ arthas ++++++
 
+#java需要有jps命令
 yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk zip unzip
 yum -y install java-11-openjdk-devel java-11-openjdk zip unzip
 
 ----- 单机版
 // 在线安装
+
 curl -O https://arthas.aliyun.com/arthas-boot.jar --output arthas-boot.jar
 
 #启动arthas   注意：启动前已经要有java进程运行，否则无法进入
+
 java -jar arthas-boot.jar --telnet-port 9998 --http-port -1
 // 启动过程中会下载相关包到本地: /root/.arthas/目录下
 
@@ -30,8 +33,11 @@ java -jar arthas-boot.jar --tunnel-server 'ws://10.0.0.91:7777/ws' --agent-id 10
 
 #注意: 在线安装与离线安装不能使用同一个依赖(~/.arthas/), arthas-boot.jar启动会报错
 
+----- 常用命令
+参考: https://blog.csdn.net/qq_48721706/article/details/126696465
 
 ----- 停止服务
+
 java -jar arthas-client.jar 127.0.0.1 9998 -c "stop"
 或者界面连接执行: stop
 
@@ -39,7 +45,7 @@ java -jar arthas-client.jar 127.0.0.1 9998 -c "stop"
 wget https://github.com/alibaba/arthas/releases/download/arthas-all-3.6.7/arthas-bin.zip
 
 // jdk8
-FROM openjdk:8-jdk-alpine # openjdk:8-jre-alpine
+FROM openjdk:8-jdk-alpine 
 
 ENV TZ=Asia/Shanghai \
     LANG=zh_CN.UTF-8 \
