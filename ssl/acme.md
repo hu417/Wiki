@@ -69,12 +69,12 @@ server {
         listen 443;
         server_name  www.bbse.top bbse.top;  # 域名
         ssl          on;                                      # 开启ssl
-        ssl_certificate  /etc/nginx/ssl/fullchain.cer;        # 证书目录
-        ssl_certificate_key  /etc/nginx/ssl/bbse.top.key;        # 证书目录
-        ssl_session_timeout 5m;
+        ssl_certificate  /etc/nginx/ssl/fullchain.cer;        # 证书文件
+        ssl_certificate_key  /etc/nginx/ssl/bbse.top.key;     # 私钥文件
+        ssl_session_timeout 5m;                               # 会话缓存过期时间
         ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-        ssl_prefer_server_ciphers on;
+        ssl_prefer_server_ciphers on;                         # 设置协商加密算法时，优先使用服务端的加密套件
 
 
         location / {
@@ -90,3 +90,8 @@ server {
 nginx -s reload
 
 ```
+
+7. 销毁证书
+acme.sh --list
+acme.sh  --revoke -d bbse.top  --remove -d *.bbse.top
+
