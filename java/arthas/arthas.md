@@ -1,6 +1,7 @@
 ++++++ arthas ++++++
 
 #java需要有jps命令
+
 yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk zip unzip
 yum -y install java-11-openjdk-devel java-11-openjdk zip unzip
 
@@ -25,10 +26,12 @@ cd arthas
 ls ~/.arthas/
 
 // 服务端
+
 wget https://github.com/alibaba/arthas/releases/download/arthas-all-3.6.7/arthas-tunnel-server-3.6.7-fatjar.jar
 java -Xms256m -Xmx256m -Xmn512m -jar -Dserver.port=8081 arthas-tunnel-server-3.6.7-fatjar.jar  
 
 // 客户端: ~/.arthas/
+
 java -jar arthas-boot.jar --tunnel-server 'ws://10.0.0.91:7777/ws' --agent-id 10.0.0.91
 
 #注意: 在线安装与离线安装不能使用同一个依赖(~/.arthas/), arthas-boot.jar启动会报错
